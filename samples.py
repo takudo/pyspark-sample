@@ -2,7 +2,7 @@
 # ---
 # jupyter:
 #   jupytext:
-#     formats: ipynb,py
+#     formats: ipynb,py:light
 #     text_representation:
 #       extension: .py
 #       format_name: light
@@ -48,6 +48,27 @@ sdf = sqlContext.createDataFrame(df)
 # sdf.show()
 
 sdf.toPandas()
+# -
+# 集計系
+rdd = sc.parallelize([1, 2, 3, 5, 8])
+rdd.collect() # 全要素
+rdd.top(2) # 大きい２つ
+rdd.count() # 要素数
+rdd.mean()  # 平均
+rdd.sum() # 合計
+rdd.variance() # 分散
+rdd.stdev() # 標準偏差
+
+
+# +
+# 変換系
+rdd = sc.parallelize([1, 2, 3, 5, 8])
+rdd.map(lambda x: x * 2).collect()
+rdd.filter(lambda x: x % 2== 0).collect()
+rdd.reduce(lambda x, y: x + y)
+
+rdd = sc.parallelize(["This is a pen", "This is an apple"])
+rdd.flatMap(lambda x: x.split()).collect()
 # -
 
 
