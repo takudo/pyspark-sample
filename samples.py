@@ -48,7 +48,9 @@ sdf = sqlContext.createDataFrame(df)
 # sdf.show()
 
 sdf.toPandas()
-# -
+# + {}
+# 以下RDDサンプル。参考: https://qiita.com/sotetsuk/items/6e4e2953799078fd6027
+
 # 集計系
 rdd = sc.parallelize([1, 2, 3, 5, 8])
 rdd.collect() # 全要素
